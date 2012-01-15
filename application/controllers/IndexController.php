@@ -1,18 +1,13 @@
 <?php
-
 class IndexController extends Zend_Controller_Action
 {
-
-    public function init()
-    {
-        /* Initialize action controller here */
-    }
-
     public function indexAction()
     {
-        // action body
+		$bootstrap = $this->getInvokeArg('bootstrap');
+		$container = $bootstrap->getResource('container');
+
+		$em = $container['entityManager'];
+
+		$this->view->items = $em->getRepository('Application_Model_Item')->findAll();
     }
-
-
 }
-
