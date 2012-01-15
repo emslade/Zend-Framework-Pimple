@@ -22,5 +22,9 @@ $application = new Zend_Application(
     APPLICATION_ENV,
     APPLICATION_PATH . '/configs/application.ini'
 );
+
+$resource = new \Example\Application\Resource\Container;
+$application->getBootstrap()->registerPluginResource($resource);
+
 $application->bootstrap()
             ->run();
